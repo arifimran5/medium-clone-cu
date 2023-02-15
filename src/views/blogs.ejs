@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <title>Blogs</title>
+  </head>
+  <body>
+    <%- include('header'); %>
+    <h1>All blog articles</h1>
+
+    <% if(count<0){ %>
+    <h1>No blogs created</h1>
+    <% } %>
+    <section class="blog_list">
+      <% if(count>0){ %> <% blogs.forEach(function(blog){ %>
+      <article class="blog_card">
+        <h2>
+          <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+        </h2>
+        <p><%= new Date(blog.date).toLocaleDateString() %></p>
+      </article>
+      %> <% }); %> <% } %>
+    </section>
+  </body>
+</html>
